@@ -1,0 +1,11 @@
+add_library(util util.hpp util.cpp)
+find_package(Python REQUIRED)
+find_package(SWIG 4.0 COMPONENTS python)
+include_directories(/usr/include/python3.11/
+                    ${CMAKE_CURRENT_SOURCE_DIR})
+if(SWIG_FOUND)
+    include(UseSWIG)
+    set_property(SOURCE util.i PROPERTY CPLUSPLUS ON)
+    swig_add_library(pyutil LANGUAGE python SOURCES util.i)
+    target_link_libraries(pyutil util)
+endif()
