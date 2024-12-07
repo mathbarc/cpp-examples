@@ -3,7 +3,6 @@
 #include <string>
 class SampleClass
 {
-
   public:
     int value;
     std::string name;
